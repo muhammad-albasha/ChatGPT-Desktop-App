@@ -1,0 +1,75 @@
+{
+  "name": "chatgpt",
+  "version": "1.0.0",
+  "description": "ChatGPT Desktop Application.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "build": {
+    "publish": [
+      {
+        "provider": "generic",
+        "url": ""
+      }
+    ],
+    "productName": "ChatGPT",
+    "appId": "GPT",
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "installerIcon": "icon.ico",
+      "uninstallerIcon": "icon.ico",
+      "uninstallDisplayName": "ChatGPT",
+      "license": "LICENSE.md",
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "ChatGPT",
+      "allowElevation": true,
+      "perMachine": false
+    },
+    "linux": {
+      "icon": "icon.icns",
+      "target": [
+        "deb",
+        "snap",
+        "rpm",
+        "AppImage"
+      ],
+      "category": "Utility"
+    },
+    "deb": {
+      "icon": "icon.icns"
+    },
+    "directories": {
+      "buildResources": "resources",
+      "output": "release"
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "icon": "icon.icns"
+    },
+    "dmg": {
+      "icon": "icon.icns"
+    }
+  },
+  "author": "MA",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^24.1.2",
+    "electron-builder": "^23.6.0"
+  },
+  "dependencies": {
+    "electron-updater": "^5.3.0",
+    "update-electron-app": "^2.0.1"
+  }
+}
