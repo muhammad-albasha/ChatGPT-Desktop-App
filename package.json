@@ -5,7 +5,13 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/muhammad-albasha/ChatGPT-Desktop-App.git"
   },
   "build": {
     "publish": [
@@ -20,12 +26,12 @@
       "target": [
         "nsis"
       ],
-      "icon": "icon.ico"
+      "icon": "./src/assets/icon.ico"
     },
     "nsis": {
       "oneClick": false,
-      "installerIcon": "icon.ico",
-      "uninstallerIcon": "icon.ico",
+      "installerIcon": "./src/assets/icon.ico",
+      "uninstallerIcon": "./src/assets/icon.ico",
       "uninstallDisplayName": "ChatGPT",
       "license": "LICENSE.md",
       "allowToChangeInstallationDirectory": true,
@@ -36,7 +42,7 @@
       "perMachine": false
     },
     "linux": {
-      "icon": "icon.icns",
+      "icon": "./src/assets/icon.icns",
       "target": [
         "deb",
         "snap",
@@ -46,7 +52,7 @@
       "category": "Utility"
     },
     "deb": {
-      "icon": "icon.icns"
+      "icon": "./src/assets/icon.icns"
     },
     "directories": {
       "buildResources": "resources",
@@ -56,14 +62,18 @@
       "target": [
         "dmg"
       ],
-      "icon": "icon.icns"
+      "icon": "./src/assets/icon.icns"
     },
     "dmg": {
-      "icon": "icon.icns"
+      "icon": "./src/assets/icon.icns"
     }
   },
   "author": "MA",
-  "license": "ISC",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "LICENSE.md"
+    }],
   "devDependencies": {
     "electron": "^24.1.2",
     "electron-builder": "^23.6.0"

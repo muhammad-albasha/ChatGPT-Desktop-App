@@ -2,7 +2,7 @@ const {app, BrowserWindow, Menu, Tray, nativeImage, dialog} = require("electron"
 const { autoUpdater } = require("electron-updater");
 const path = require("path");
 const url = require("url");
-const iconPath = path.join(__dirname, "icon.png");
+const iconPath = path.join(__dirname, "./src/assets/icon.png");
 
 function createWindow() {
   const win = new BrowserWindow({
