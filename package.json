@@ -9,17 +9,13 @@
     "dist": "electron-builder",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "github",
-    "url": "https://github.com/muhammad-albasha/ChatGPT-Desktop-App.git"
-  },
-  "build": {
-    "publish": [
+  "repository":"https://github.com/muhammad-albasha/ChatGPT-Desktop-App.git",
+  "publish":
       {
-        "provider": "generic",
-        "url": ""
-      }
-    ],
+        "provider": "github",
+        "releaseType": "release"
+      },
+  "build": {
     "productName": "ChatGPT",
     "appId": "GPT",
     "win": {
