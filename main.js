@@ -1,7 +1,6 @@
-const {app, BrowserWindow, Menu, Tray, nativeImage, dialog} = require("electron");
+const {app, BrowserWindow, Menu, Tray, nativeImage, dialog, shell} = require("electron");
 const { autoUpdater } = require("electron-updater");
 const path = require("path");
-const url = require("url");
 const iconPath = path.join(__dirname, "./src/assets/icon.png");
 
 function createWindow() {
@@ -15,7 +14,13 @@ function createWindow() {
       preload: path.join(__dirname, "preload.js"),
     },
   });
-
+	function handleRedirect(e, url) {
+		e.preventDefault();
+		if (url !== win.webContents.getURL()) {
+			shell.openExternal(url);
+		}
+	}
+	win.webContents.on('new-window', handleRedirect);
   win.loadURL("https://chat.openai.com/");
   const tray = new Tray(nativeImage.createFromPath(iconPath));
   const contextMenu = Menu.buildFromTemplate([{ role: "quit", label: "Quit" }]);
@@ -91,13 +96,6 @@ function createWindow() {
       }
     });
   });
-  function handleRedirect(e, url) {
-    e.preventDefault();
-    if (url !== win.webContents.getURL()) {
-      shell.openExternal(url);
-    }
-  }
-  win.webContents.on("new-window", handleRedirect);
 }
 
 app.whenReady().then(() => {
